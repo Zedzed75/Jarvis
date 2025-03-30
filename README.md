@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Jarvis AI Assistant
 
 A Jarvis-inspired AI assistant that aims to provide a natural, helpful virtual assistant experience similar to Tony Stark's JARVIS from Iron Man.
@@ -179,3 +180,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+=======
+# Jarvis
+>>>>>>> eefb4db58a7ded8b29a8d51b626baf2b7c64d51f
