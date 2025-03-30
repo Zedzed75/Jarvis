@@ -1,0 +1,33 @@
+# Core dependencies
+PyYAML>=6.0
+pyaudio>=0.2.12
+requests>=2.27.1
+numpy>=1.20.0
+pytz>=2022.1
+
+# Speech recognition
+# Uncomment based on preferred provider
+# google-cloud-speech>=2.14.0  # Google Cloud Speech-to-Text
+# deepspeech>=0.9.3            # Mozilla DeepSpeech
+
+# Text-to-speech
+# Uncomment based on preferred provider
+# boto3>=1.24.0                # Amazon Polly
+# TTS>=0.10.0                  # Mozilla TTS
+
+# Wake word detection
+# Uncomment based on preferred provider
+# pvporcupine>=2.1.4          # Picovoice Porcupine
+# snowboy                      # Snowboy (requires special installation)
+
+# NLP
+# Uncomment based on preferred provider
+# rasa>=3.0.0                  # Rasa NLU
+# google-cloud-dialogflow>=2.13.0  # Google DialogFlow
+# spacy>=3.2.0                 # spaCy for entity extraction
+
+# Development tools
+pytest>=6.2.5
+black>=22.1.0
+pylint>=2.12.2
+mypy>=0.931

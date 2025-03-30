@@ -1,0 +1,165 @@
+# Jarvis Assistant Configuration
+
+# General settings
+general:
+  name: "Jarvis"
+  version: "1.0.0"
+  language: "en-US"
+  log_level: "info"  # Options: debug, info, warning, error
+
+# Speech processing settings
+speech:
+  # Speech recognition configuration
+  recognition:
+    provider: "google"  # Options: google, deepspeech
+    language: "en-US"
+    timeout_seconds: 5
+    energy_threshold: 300
+    silent_chunks_threshold: 10
+    # Google Cloud Speech settings
+    google_credentials_file: "path/to/google_credentials.json"  # Optional
+    google_model: "command_and_search"  # Options: default, phone_call, command_and_search
+    # DeepSpeech settings
+    deepspeech_model_path: "path/to/deepspeech/model.pbmm"  # Required if using DeepSpeech
+    deepspeech_scorer_path: "path/to/deepspeech/scorer.scorer"  # Optional
+
+  # Text-to-speech configuration
+  synthesis:
+    provider: "polly"  # Options: polly, mozilla
+    voice: "Brian"  # Default Amazon Polly voice
+    # Amazon Polly settings
+    aws_region: "us-east-1"
+    aws_access_key_id: ""  # Leave empty to use AWS credentials from environment
+    aws_secret_access_key: ""  # Leave empty to use AWS credentials from environment
+    polly_engine: "neural"  # Options: standard, neural
+    polly_language: "en-US"
+    # Mozilla TTS settings
+    mozilla_tts_model: "tts_models/en/ljspeech/tacotron2-DDC"
+    mozilla_tts_vocoder: "vocoder_models/en/ljspeech/multiband-melgan"
+    mozilla_tts_model_path: ""  # Optional: path to local model
+
+  # Wake word detection configuration
+  wake_word:
+    provider: "porcupine"  # Options: porcupine, snowboy
+    keywords: ["jarvis"]
+    sensitivity: 0.5  # Range: 0.0 to 1.0
+    # Porcupine settings
+    porcupine_access_key: ""  # Required for Porcupine
+    # Snowboy settings
+    snowboy_model_paths: ["path/to/snowboy/jarvis.umdl"]
+    snowboy_resource_path: "path/to/snowboy/resources/common.res"
+    snowboy_audio_gain: 1.0
+    snowboy_apply_frontend: false
+
+# Natural Language Processing settings
+nlp:
+  # Intent recognition configuration
+  intent:
+    provider: "rules"  # Options: rasa, dialogflow, rules
+    confidence_threshold: 0.6
+    fallback_intent: "unknown"
+    # Rasa NLU settings
+    rasa_model_path: "path/to/rasa/model"
+    # DialogFlow settings
+    dialogflow_project_id: ""
+    dialogflow_credentials_file: "path/to/dialogflow_credentials.json"
+    dialogflow_language: "en"
+    # Rules-based settings (if using the rules provider)
+    rules:
+      weather:
+        - "weather"
+        - "temperature"
+        - "forecast"
+        - "rain"
+        - "sunny"
+        - "cloudy"
+        - "how hot"
+        - "how cold"
+      time:
+        - "time"
+        - "hour"
+        - "clock"
+        - "what time"
+      greeting:
+        - "hello"
+        - "hi"
+        - "hey"
+        - "good morning"
+        - "good afternoon"
+      # Add more rules as needed
+
+  # Entity extraction configuration
+  entities:
+    provider: "rules"  # Options: rasa, spacy, rules
+    # Spacy settings
+    spacy_model: "en_core_web_md"
+
+  # Conversation management
+  conversation:
+    context_duration_minutes: 10
+    max_context_entries: 5
+
+# Notification settings
+notifications:
+  provider: "telegram"  # Options: telegram, email, etc.
+  enabled: true
+  # Telegram settings
+  telegram:
+    token: ""  # Add to secrets.yaml
+    chat_id: ""  # Add to secrets.yaml
+
+# Skills configuration
+skills:
+  # Enable/disable specific skills
+  weather:
+    enabled: true
+    provider: "openweathermap"  # Options: openweathermap, weatherapi
+    api_key: ""  # Add to secrets.yaml
+    default_location: "New York"
+    units: "imperial"  # Options: imperial, metric
+    
+  time_date:
+    enabled: true
+    timezone: "America/New_York"
+    
+  calendar:
+    enabled: true
+    provider: "google"  # Options: google, outlook
+    google_credentials_file: "path/to/google_calendar_credentials.json"
+    max_events: 5
+    
+  web_search:
+    enabled: true
+    provider: "duckduckgo"  # Options: duckduckgo, google
+    safe_search: true
+    
+  smart_home:
+    enabled: false
+    provider: "home_assistant"  # Options: home_assistant, openhab, direct
+    url: "http://localhost:8123"
+    token: ""  # Add to secrets.yaml
+    devices:
+      lights:
+        - name: "Living Room"
+          entity_id: "light.living_room"
+        - name: "Kitchen"
+          entity_id: "light.kitchen"
+      thermostats:
+        - name: "Home"
+          entity_id: "climate.home"
+    
+  personality:
+    enabled: true
+    name: "Jarvis"
+    character: "helpful and efficient"
+    responses:
+      greeting:
+        - "Hello, sir. How may I assist you today?"
+        - "Good day. What can I do for you?"
+        - "At your service. What do you need?"
+      farewell:
+        - "Goodbye. I'll be here if you need me."
+        - "Until next time, sir."
+      unknown:
+        - "I'm sorry, I don't understand."
+        - "I'm not sure how to help with that yet."
