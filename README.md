@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Jarvis AI Assistant
 
 A Jarvis-inspired AI assistant that aims to provide a natural, helpful virtual assistant experience similar to Tony Stark's JARVIS from Iron Man.
@@ -20,7 +19,7 @@ The implementation follows a phased approach to build an increasingly capable as
 
 This project follows Clean Architecture principles, organizing code into distinct layers with dependencies pointing inward:
 
-```
+```plaintext
                ┌─────────────────┐
                │    Interface    │
                │  (CLI, Web UI)  │
@@ -54,7 +53,7 @@ This project follows Clean Architecture principles, organizing code into distinc
 
 ## Project Structure
 
-```
+```plaintext
 Jarvis/
 ├── domain/                # Core business logic and entities
 │   ├── models/            # Domain models
@@ -78,9 +77,18 @@ Jarvis/
 │   ├── cli/               # Command-line interface
 │   └── web/               # Web interface (future)
 │
+├── tests/                 # Test suite
+│   ├── domain/            # Domain layer tests
+│   ├── application/       # Application layer tests
+│   ├── infrastructure/    # Infrastructure layer tests
+│   ├── interface/         # Interface layer tests
+│   ├── integration/       # Integration tests
+│   ├── system/            # End-to-end system tests
+│   └── mocks/             # Mock implementations for testing
+│
 ├── main.py                # Application entry point
 ├── config/                # Configuration files
-└── tests/                 # Test suite
+└── README.md              # This file
 ```
 
 ## Key Features
@@ -96,26 +104,31 @@ Jarvis/
 ## Installation
 
 1. Clone the repository:
-```bash
-git clone https://github.com/Zedzed75/Jarvis.git
-cd Jarvis
-```
+
+    ```bash
+    git clone https://github.com/Zedzed75/Jarvis.git
+    cd Jarvis
+    ```
 
 2. Create and activate a virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
 
 3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 4. Copy the secrets template and add your API keys:
-```bash
-cp config/secrets.yaml.example config/secrets.yaml
-```
+
+    ```bash
+    cp config/secrets.yaml.example config/secrets.yaml
+    ```
+
 Then edit `config/secrets.yaml` to add your API keys.
 
 ## Configuration
@@ -144,30 +157,63 @@ python main.py
 ```
 
 Command-line options:
-```
+
+```bash
 --config       Path to configuration file
 --debug        Enable debug mode
 --no-voice     Disable voice and use text mode only
 ```
 
+## Testing
+
+The project follows a comprehensive testing strategy:
+
+```bash
+# Run all tests
+python -m unittest discover
+
+# Run tests for a specific layer
+python -m unittest discover tests/domain
+python -m unittest discover tests/application
+python -m unittest discover tests/infrastructure
+python -m unittest discover tests/interface
+
+# Run integration tests
+python -m unittest discover tests/integration
+
+# Run system tests
+python -m unittest discover tests/system
+```
+
+The test suite includes:
+
+- **Unit tests**: Testing individual components in isolation
+- **Integration tests**: Testing how components work together
+- **System tests**: End-to-end testing of the application
+- **Mock implementations**: Reusable test doubles for controlled testing
+
 ## Development Phases
 
 ### Phase 1: Foundation
+
 - Basic voice interaction
 - Core information services
 - Initial personality
 
 ### Phase 2: Home Integration
+
 - Smart home connectivity
 - Expanded personal management
 - Enhanced conversation
 
 ### Phase 3: Intelligence Expansion
+
 - Learning capabilities
 - Advanced integrations
 - Multi-device presence
 
 ### Phase 4: Advanced Features
+
 - Proactive assistance
 - Data analysis
 - Specialized knowledge domains
@@ -180,6 +226,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-=======
-# Jarvis
->>>>>>> eefb4db58a7ded8b29a8d51b626baf2b7c64d51f
